@@ -19,9 +19,7 @@ jobs:
         run: |
           sudo apt-get install curl
       - name: Weather report
-        run: curl -o weather.json "https://api.openweathermap.org/data/2.5/weather?lat=41.6414438&lon=-80.15144839999999&appid=${API}"
-        env:
-          API: ${{ secrets.OpenWeather }}
+        run: curl -o weather.json "https://api.openweathermap.org/data/2.5/weather?lat=41.6414438&lon=-80.15144839999999&appid=${{ secrets.OpenWeather }}"
       - name: Publish weather report
         run: |
           git config --local user.email "dluman@allegheny.edu"
