@@ -23,7 +23,9 @@ jobs:
         env:
           API: ${{ secrets.OpenWeather }}
       - name: Publish weather report
-        uses: actions/upload-artifact@v3
-        with:
-          name: Weather Report
-          path: /weather.json
+        run: |
+          git add -A
+          git commit -m "Adding daily weather report"
+          git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
