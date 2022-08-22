@@ -1,0 +1,40 @@
+name: Weather report
+on:
+  push:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+      - uses: actions/checkout@v3
+      - name: Set up dependencies
+        run: |
+          sudo apt-get install curl
+      - name: Create release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.date.outputs.date }}
+          release_name: ${{ steps.date.outputs.date }}
+          draft: false
+          prerelease: false
+      - name: Weather report
+        run: curl -o weatherreport.json "https://api.openweathermap.org/data/2.5/weather?lat=41.6414438&lon=-80.15144839999999&appid=$API"
+        env:
+          API: ${{ secrets.OpenWeather }}
+      - name: Upload report
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: weatherreport.json
+          asset_name: weatherreport.json
+          asset_content_type: json
