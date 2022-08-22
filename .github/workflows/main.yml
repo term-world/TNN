@@ -19,7 +19,9 @@ jobs:
         run: |
           sudo apt-get install curl
       - name: Weather report
-        run: curl -o weather.json "https://api.openweathermap.org/data/2.5/weather?lat=$LAT&lon=$LON&appid=$API"
+        run: |
+          echo "Weather for: $LAT, $LON"
+          curl -o weather.json "https://api.openweathermap.org/data/2.5/weather?lat=$LAT&lon=$LON&appid=$API"
         env:
           LAT: 41.6414438
           LON: -80.15144839999999
