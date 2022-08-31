@@ -2,7 +2,7 @@ name: Weather report
 on:
   push:
   schedule:
-    - cron: '0 */12 * * *'
+    - cron: '0 */6 * * *'
 jobs:
   build:
     runs-on: ubuntu-latest
