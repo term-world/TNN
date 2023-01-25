@@ -11,9 +11,6 @@ jobs:
         uses: szenius/set-timezone@v1.1
         with:
           timezoneLinux: "America/New_York"
-      - name: Get date
-        id: date
-        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
       - uses: actions/checkout@v3
       - name: Set up dependencies
         run: |
