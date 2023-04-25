@@ -1,0 +1,12 @@
+[
+    {
+        "MunchMachine": {
+            "candybar": {
+                "visited": "munchmachine/visited_munchmachine_cb.png"
+            },
+            "block": {
+                "visited": "munchmachine/visited_munchmachine_sq.png"
+            }
+        }
+    }
+]
