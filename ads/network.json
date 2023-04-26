@@ -1,6 +1,7 @@
 [
     {
-        "MunchMachine": {
+        "name":"MunchMachine",
+        "ads": {
             "candybar": {
                 "visited": "munchmachine/visited_munchmachine_cb.png"
             },
