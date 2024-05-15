@@ -25,8 +25,8 @@ jobs:
           API: ${{ secrets.OpenWeather }}
       - name: Publish weather report
         run: |
-          git config --local user.email "dluman@allegheny.edu"
-          git config --local user.name "dluman"
+          git config --local user.email "TNN@world.theterm.world"
+          git config --local user.name "TNN"
           git add -A
           git commit -m "Adding daily weather report"
           git push origin main
